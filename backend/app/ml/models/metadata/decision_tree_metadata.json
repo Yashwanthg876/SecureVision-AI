@@ -1,0 +1,80 @@
+{
+    "model_name": "Decision Tree",
+    "model_version": "1.0",
+    "feature_schema_version": "1.0",
+    "dataset_version": "1.0",
+    "training_timestamp": "2026-08-21T19:58:54.456019",
+    "training_dataset_size": 800,
+    "validation_dataset_size": 200,
+    "test_dataset_size": 200,
+    "hyperparameters": {
+        "random_state": 42,
+        "max_depth": 10,
+        "class_weight": "balanced"
+    },
+    "accuracy": 0.465,
+    "precision": 0.4616889048302248,
+    "recall": 0.465,
+    "f1_score": 0.4613701192424597,
+    "roc_auc": 0.643651277479525,
+    "training_duration": 0.005524873733520508,
+    "scikit_learn_version": "1.9.0",
+    "cross_validation": {
+        "accuracy_folds": [
+            0.46875,
+            0.41875,
+            0.45625,
+            0.45,
+            0.5125
+        ],
+        "mean_accuracy": 0.46125,
+        "std_accuracy": 0.03046514401738483,
+        "min_accuracy": 0.41875,
+        "max_accuracy": 0.5125,
+        "precision_folds": [
+            0.4673424244432661,
+            0.4116401340594889,
+            0.44245760959470637,
+            0.4451522956326987,
+            0.5129202178030303
+        ],
+        "mean_precision": 0.4559025363066381,
+        "std_precision": 0.033577912458423814,
+        "min_precision": 0.4116401340594889,
+        "max_precision": 0.5129202178030303,
+        "recall_folds": [
+            0.46875,
+            0.41875,
+            0.45625,
+            0.45,
+            0.5125
+        ],
+        "mean_recall": 0.46125,
+        "std_recall": 0.03046514401738483,
+        "min_recall": 0.41875,
+        "max_recall": 0.5125,
+        "f1_score_folds": [
+            0.4679094020882585,
+            0.41323882494935127,
+            0.44743548315207704,
+            0.44587960306477203,
+            0.5047908686777349
+        ],
+        "mean_f1_score": 0.45585083638643875,
+        "std_f1_score": 0.030088412886647542,
+        "min_f1_score": 0.41323882494935127,
+        "max_f1_score": 0.5047908686777349,
+        "roc_auc_folds": [
+            0.6585482615646386,
+            0.6211024770683862,
+            0.6414996693121694,
+            0.6530888576911303,
+            0.6725110332638742
+        ],
+        "mean_roc_auc": 0.6493500597800397,
+        "std_roc_auc": 0.017289134033599225,
+        "min_roc_auc": 0.6211024770683862,
+        "max_roc_auc": 0.6725110332638742,
+        "model_name": "Decision Tree"
+    }
+}

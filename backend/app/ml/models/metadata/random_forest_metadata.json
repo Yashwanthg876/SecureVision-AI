@@ -1,0 +1,83 @@
+{
+    "model_name": "Random Forest",
+    "model_version": "1.0",
+    "feature_schema_version": "1.0",
+    "dataset_version": "1.0",
+    "training_timestamp": "2026-08-21T19:58:55.950458",
+    "training_dataset_size": 800,
+    "validation_dataset_size": 200,
+    "test_dataset_size": 200,
+    "hyperparameters": {
+        "random_state": 42,
+        "n_estimators": 100,
+        "max_depth": 15,
+        "class_weight": "balanced",
+        "n_jobs": -1
+    },
+    "accuracy": 0.54,
+    "precision": 0.5422489661842192,
+    "recall": 0.54,
+    "f1_score": 0.5396196652255848,
+    "roc_auc": 0.7571304616168345,
+    "training_duration": 0.28109097480773926,
+    "scikit_learn_version": "1.9.0",
+    "cross_validation": {
+        "accuracy_folds": [
+            0.48125,
+            0.46875,
+            0.55625,
+            0.58125,
+            0.53125
+        ],
+        "mean_accuracy": 0.52375,
+        "std_accuracy": 0.04301162633521315,
+        "min_accuracy": 0.46875,
+        "max_accuracy": 0.58125,
+        "precision_folds": [
+            0.47824308755760364,
+            0.45868768328445747,
+            0.5545871126228269,
+            0.585339677260409,
+            0.5275330961581031
+        ],
+        "mean_precision": 0.5208781313766799,
+        "std_precision": 0.046949491298588435,
+        "min_precision": 0.45868768328445747,
+        "max_precision": 0.585339677260409,
+        "recall_folds": [
+            0.48125,
+            0.46875,
+            0.55625,
+            0.58125,
+            0.53125
+        ],
+        "mean_recall": 0.52375,
+        "std_recall": 0.04301162633521315,
+        "min_recall": 0.46875,
+        "max_recall": 0.58125,
+        "f1_score_folds": [
+            0.4778306176639139,
+            0.45964567360350495,
+            0.5545262664165103,
+            0.5782817809417389,
+            0.5260309821736439
+        ],
+        "mean_f1_score": 0.5192630641598623,
+        "std_f1_score": 0.04481827296450136,
+        "min_f1_score": 0.45964567360350495,
+        "max_f1_score": 0.5782817809417389,
+        "roc_auc_folds": [
+            0.7660936218694407,
+            0.7394874447911715,
+            0.7841335978835978,
+            0.7834310654623154,
+            0.7752465156371405
+        ],
+        "mean_roc_auc": 0.7696784491287332,
+        "std_roc_auc": 0.016452579588475864,
+        "min_roc_auc": 0.7394874447911715,
+        "max_roc_auc": 0.7841335978835978,
+        "model_name": "Random Forest"
+    },
+    "feature_importance_file": "C:\\Users\\gchan\\OneDrive\\Desktop\\SecureVision AI\\backend\\app\\ml\\logs\\importances\\random_forest_feature_importance_1.0.json"
+}

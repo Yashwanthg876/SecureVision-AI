@@ -1,0 +1,11 @@
+Metric,Value
+Total Samples,1000
+Raw Features Count (in X),16
+Duplicate Records,0
+Missing Values Percentage,4.35%
+Derived From Real Data,False (100% Synthetic)
+Class Ratio (min/max),0.4413
+Class Count (Medium),349
+Class Count (High),252
+Class Count (Low),245
+Class Count (Critical),154

@@ -1,0 +1,85 @@
+{
+    "dataset_source": "Synthetic / Stimulated",
+    "source_details": "Generated automatically via generate_mock_data() in backend/app/ml/run_models.py because backend/securevision.db initially contained 0 assessment records.",
+    "total_samples": 100,
+    "raw_feature_count": 17,
+    "encoded_feature_count": 17,
+    "features_before_encoding": [
+        "ssl_is_valid",
+        "cert_expiry_days",
+        "tls_version",
+        "has_hsts",
+        "has_csp",
+        "has_x_frame_options",
+        "has_x_content_type_options",
+        "has_spf",
+        "has_dmarc",
+        "domain_age_days",
+        "server_software",
+        "framework",
+        "ssl_score",
+        "headers_score",
+        "dns_score",
+        "tech_score",
+        "overall_score"
+    ],
+    "features_after_encoding": [
+        "num__cert_expiry_days",
+        "num__domain_age_days",
+        "num__ssl_score",
+        "num__headers_score",
+        "num__dns_score",
+        "num__tech_score",
+        "num__overall_score",
+        "bool__ssl_is_valid",
+        "bool__has_hsts",
+        "bool__has_csp",
+        "bool__has_x_frame_options",
+        "bool__has_x_content_type_options",
+        "bool__has_spf",
+        "bool__has_dmarc",
+        "cat__tls_version_TLSv1.3",
+        "cat__server_software_nginx",
+        "cat__framework_React"
+    ],
+    "target_label": "risk_level",
+    "target_classes": [
+        "Critical",
+        "High",
+        "Low",
+        "Medium"
+    ],
+    "class_distribution": {
+        "Medium": 34,
+        "High": 32,
+        "Low": 26,
+        "Critical": 8
+    },
+    "class_percentages": {
+        "Medium": 34.0,
+        "High": 32.0,
+        "Low": 26.0,
+        "Critical": 8.0
+    },
+    "is_synthetic_or_stimulated": true,
+    "derived_from_real_assessments": false,
+    "missing_values": {
+        "total_cells_missing": 74,
+        "overall_percentage": 4.35,
+        "description": "Missing values present in raw JSON telemetry prior to pipeline default extraction."
+    },
+    "duplicate_records": 0,
+    "train_test_split": {
+        "train_size": 80,
+        "test_size": 20,
+        "test_ratio": 0.2,
+        "stratified": true,
+        "random_state": 42
+    },
+    "cross_validation": {
+        "strategy": "5-Fold StratifiedKFold",
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 42
+    }
+}

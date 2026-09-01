@@ -1,0 +1,12 @@
+{
+    "production_model": "Logistic Regression",
+    "production_version": "1.0",
+    "candidate_models": [
+        "Random Forest",
+        "Extra Trees",
+        "XGBoost",
+        "Decision Tree"
+    ],
+    "created_at": "2026-08-04T07:57:28.402060",
+    "last_updated": "2026-08-21T19:59:00.906394"
+}

@@ -1,0 +1,94 @@
+[
+    {
+        "model_name": "Logistic Regression",
+        "implementation_path": "backend/app/ml/models/logistic_regression/model.py",
+        "trainer_path": "backend/app/ml/training/trainer.py",
+        "hyperparameters": {
+            "random_state": 42,
+            "max_iter": 1000,
+            "class_weight": "balanced",
+            "solver": "lbfgs"
+        },
+        "model_artifact_exists": true,
+        "artifact_path": "backend/app/ml/models/logistic_regression/logistic_regression_1.0.joblib",
+        "model_version": "1.0",
+        "training_status": "Trained and Evaluated",
+        "metadata_availability": true,
+        "metadata_path": "backend/app/ml/models/metadata/logistic_regression_metadata.json"
+    },
+    {
+        "model_name": "Decision Tree",
+        "implementation_path": "backend/app/ml/models/decision_tree/model.py",
+        "trainer_path": "backend/app/ml/training/trainer.py",
+        "hyperparameters": {
+            "random_state": 42,
+            "max_depth": 10,
+            "class_weight": "balanced"
+        },
+        "model_artifact_exists": true,
+        "artifact_path": "backend/app/ml/models/decision_tree/decision_tree_1.0.joblib",
+        "model_version": "1.0",
+        "training_status": "Trained, Evaluated, and Promoted to Production",
+        "metadata_availability": true,
+        "metadata_path": "backend/app/ml/models/metadata/decision_tree_metadata.json"
+    },
+    {
+        "model_name": "Random Forest",
+        "implementation_path": "backend/app/ml/models/random_forest/trainer.py",
+        "trainer_path": "backend/app/ml/models/random_forest/trainer.py",
+        "hyperparameters": {
+            "random_state": 42,
+            "n_estimators": 100,
+            "max_depth": 15,
+            "class_weight": "balanced",
+            "n_jobs": -1
+        },
+        "model_artifact_exists": true,
+        "artifact_path": "backend/app/ml/models/random_forest/random_forest_1.0.joblib",
+        "model_version": "1.0",
+        "training_status": "Trained and Evaluated",
+        "metadata_availability": true,
+        "metadata_path": "backend/app/ml/models/metadata/random_forest_metadata.json"
+    },
+    {
+        "model_name": "Extra Trees",
+        "implementation_path": "backend/app/ml/models/extra_trees/trainer.py",
+        "trainer_path": "backend/app/ml/models/extra_trees/trainer.py",
+        "hyperparameters": {
+            "random_state": 42,
+            "n_estimators": 150,
+            "max_depth": 15,
+            "class_weight": "balanced",
+            "n_jobs": -1
+        },
+        "model_artifact_exists": true,
+        "artifact_path": "backend/app/ml/models/extra_trees/extra_trees_1.0.joblib",
+        "model_version": "1.0",
+        "training_status": "Trained and Evaluated",
+        "metadata_availability": true,
+        "metadata_path": "backend/app/ml/models/metadata/extra_trees_metadata.json"
+    },
+    {
+        "model_name": "XGBoost",
+        "implementation_path": "backend/app/ml/models/xgboost/trainer.py",
+        "trainer_path": "backend/app/ml/models/xgboost/trainer.py",
+        "hyperparameters": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 1,
+            "n_estimators": 100,
+            "min_child_weight": 1,
+            "max_depth": 7,
+            "learning_rate": 0.2,
+            "gamma": 0.5,
+            "colsample_bytree": 1.0,
+            "random_state": 42
+        },
+        "model_artifact_exists": true,
+        "artifact_path": "backend/app/ml/models/xgboost/xgboost_1.0.joblib",
+        "model_version": "1.0",
+        "training_status": "Trained, Tuned, and Evaluated",
+        "metadata_availability": true,
+        "metadata_path": "backend/app/ml/models/metadata/xgboost_metadata.json"
+    }
+]

@@ -1,0 +1,83 @@
+{
+    "model_name": "Extra Trees",
+    "model_version": "1.0",
+    "feature_schema_version": "1.0",
+    "dataset_version": "1.0",
+    "training_timestamp": "2026-08-21T19:58:57.736970",
+    "training_dataset_size": 800,
+    "validation_dataset_size": 200,
+    "test_dataset_size": 200,
+    "hyperparameters": {
+        "random_state": 42,
+        "n_estimators": 150,
+        "max_depth": 15,
+        "class_weight": "balanced",
+        "n_jobs": -1
+    },
+    "accuracy": 0.525,
+    "precision": 0.5258404056100088,
+    "recall": 0.525,
+    "f1_score": 0.5199389651229275,
+    "roc_auc": 0.748990197499902,
+    "training_duration": 0.4301307201385498,
+    "scikit_learn_version": "1.9.0",
+    "cross_validation": {
+        "accuracy_folds": [
+            0.525,
+            0.46875,
+            0.50625,
+            0.51875,
+            0.45
+        ],
+        "mean_accuracy": 0.49375,
+        "std_accuracy": 0.029315098498896443,
+        "min_accuracy": 0.45,
+        "max_accuracy": 0.525,
+        "precision_folds": [
+            0.5403091781177081,
+            0.46009628103378103,
+            0.5248217049977886,
+            0.5303514799154334,
+            0.4453385750962773
+        ],
+        "mean_precision": 0.5001834438321977,
+        "std_precision": 0.03935014387323574,
+        "min_precision": 0.4453385750962773,
+        "max_precision": 0.5403091781177081,
+        "recall_folds": [
+            0.525,
+            0.46875,
+            0.50625,
+            0.51875,
+            0.45
+        ],
+        "mean_recall": 0.49375,
+        "std_recall": 0.029315098498896443,
+        "min_recall": 0.45,
+        "max_recall": 0.525,
+        "f1_score_folds": [
+            0.5237281874472277,
+            0.45964907334255123,
+            0.5108836844050259,
+            0.5215758868808568,
+            0.44753605769230764
+        ],
+        "mean_f1_score": 0.4926745779535938,
+        "std_f1_score": 0.03243255723572941,
+        "min_f1_score": 0.44753605769230764,
+        "max_f1_score": 0.5237281874472277,
+        "roc_auc_folds": [
+            0.7588748191981816,
+            0.744144170501958,
+            0.7379075727513228,
+            0.7443992371265099,
+            0.728318731457936
+        ],
+        "mean_roc_auc": 0.7427289062071816,
+        "std_roc_auc": 0.009963753081178325,
+        "min_roc_auc": 0.728318731457936,
+        "max_roc_auc": 0.7588748191981816,
+        "model_name": "Extra Trees"
+    },
+    "feature_importance_file": "C:\\Users\\gchan\\OneDrive\\Desktop\\SecureVision AI\\backend\\app\\ml\\logs\\importances\\extra_trees_feature_importance_1.0.json"
+}

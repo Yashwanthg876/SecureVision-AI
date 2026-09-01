@@ -1,0 +1,15 @@
+Metric,Value
+Dataset Source,Synthetic / Stimulated
+Total Samples,100
+Raw Features Count,17
+Encoded Features Count,17
+Target Label,risk_level
+Class Count (Medium),34 (34.0%)
+Class Count (High),32 (32.0%)
+Class Count (Low),26 (26.0%)
+Class Count (Critical),8 (8.0%)
+Derived From Real Assessments,False
+Missing Values Percentage,4.35%
+Duplicate Records,0
+Train/Test Ratio,80/20 Stratified Split
+Cross-Validation Config,5-Fold Stratified Cross Validation

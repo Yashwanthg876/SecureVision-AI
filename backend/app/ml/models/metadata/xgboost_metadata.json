@@ -1,0 +1,87 @@
+{
+    "model_name": "XGBoost",
+    "model_version": "1.0",
+    "feature_schema_version": "1.0",
+    "dataset_version": "1.0",
+    "training_timestamp": "2026-08-21T19:58:59.556467",
+    "training_dataset_size": 800,
+    "validation_dataset_size": 200,
+    "test_dataset_size": 200,
+    "hyperparameters": {
+        "subsample": 0.8,
+        "reg_lambda": 2,
+        "reg_alpha": 0,
+        "n_estimators": 100,
+        "min_child_weight": 5,
+        "max_depth": 5,
+        "learning_rate": 0.05,
+        "gamma": 1,
+        "colsample_bytree": 0.8
+    },
+    "accuracy": 0.57,
+    "precision": 0.5845037182372517,
+    "recall": 0.57,
+    "f1_score": 0.5692462666299991,
+    "roc_auc": 0.7867803688754784,
+    "training_duration": 0.2908926010131836,
+    "scikit_learn_version": "1.9.0",
+    "cross_validation": {
+        "accuracy_folds": [
+            0.58125,
+            0.54375,
+            0.625,
+            0.58125,
+            0.59375
+        ],
+        "mean_accuracy": 0.585,
+        "std_accuracy": 0.026100766272276386,
+        "min_accuracy": 0.54375,
+        "max_accuracy": 0.625,
+        "precision_folds": [
+            0.6002032520325203,
+            0.5452106819186561,
+            0.644286735783201,
+            0.5915500026886702,
+            0.6002439762782072
+        ],
+        "mean_precision": 0.596298929740251,
+        "std_precision": 0.03151570410822601,
+        "min_precision": 0.5452106819186561,
+        "max_precision": 0.644286735783201,
+        "recall_folds": [
+            0.58125,
+            0.54375,
+            0.625,
+            0.58125,
+            0.59375
+        ],
+        "mean_recall": 0.585,
+        "std_recall": 0.026100766272276386,
+        "min_recall": 0.54375,
+        "max_recall": 0.625,
+        "f1_score_folds": [
+            0.5726446853444935,
+            0.5419663070321735,
+            0.629495899281254,
+            0.5825475771324543,
+            0.5938415624010136
+        ],
+        "mean_f1_score": 0.5840992062382778,
+        "std_f1_score": 0.028511639869147218,
+        "min_f1_score": 0.5419663070321735,
+        "max_f1_score": 0.629495899281254,
+        "roc_auc_folds": [
+            0.8177596342494404,
+            0.7973011238427349,
+            0.8182151124338624,
+            0.813603885592522,
+            0.8241827989981398
+        ],
+        "mean_roc_auc": 0.8142125110233399,
+        "std_roc_auc": 0.009103570561273951,
+        "min_roc_auc": 0.7973011238427349,
+        "max_roc_auc": 0.8241827989981398,
+        "model_name": "XGBoost"
+    },
+    "feature_importance_file": "C:\\Users\\gchan\\OneDrive\\Desktop\\SecureVision AI\\backend\\app\\ml\\logs\\importances\\xgboost_feature_importance_1.0.json"
+}

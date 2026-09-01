@@ -1,0 +1,42 @@
+{
+    "is_valid": true,
+    "total_samples": 1000,
+    "total_columns": 23,
+    "leakage_checks": {
+        "target_in_X": false,
+        "overall_score_excluded_from_X": true,
+        "suspicious_correlations": {},
+        "preprocessing_fold_isolated": true
+    },
+    "data_quality": {
+        "score_bounds_valid": true,
+        "missing_values_count": 1000,
+        "missing_values_percentage": 4.3478260869565215,
+        "duplicate_rows": 0,
+        "constant_features": [
+            "feature_count",
+            "cert_expiry_days"
+        ]
+    },
+    "class_distribution": {
+        "counts": {
+            "Medium": 349,
+            "High": 252,
+            "Low": 245,
+            "Critical": 154
+        },
+        "percentages": {
+            "Medium": 34.9,
+            "High": 25.2,
+            "Low": 24.5,
+            "Critical": 15.4
+        },
+        "min_max_balance_ratio": 0.44126074498567336,
+        "is_stratified_ready": true
+    },
+    "warnings": [
+        "overall_score is present in raw dataframe but will be excluded from ML features matrix X.",
+        "Constant features detected: ['feature_count', 'cert_expiry_days']"
+    ],
+    "errors": []
+}

@@ -1,0 +1,81 @@
+{
+    "model_name": "Logistic Regression",
+    "model_version": "1.0",
+    "feature_schema_version": "1.0",
+    "dataset_version": "1.0",
+    "training_timestamp": "2026-08-21T19:58:54.404898",
+    "training_dataset_size": 800,
+    "validation_dataset_size": 200,
+    "test_dataset_size": 200,
+    "hyperparameters": {
+        "random_state": 42,
+        "max_iter": 1000,
+        "class_weight": "balanced",
+        "solver": "lbfgs"
+    },
+    "accuracy": 0.595,
+    "precision": 0.598642995169082,
+    "recall": 0.595,
+    "f1_score": 0.596161673988516,
+    "roc_auc": 0.8094611178598953,
+    "training_duration": 0.024155139923095703,
+    "scikit_learn_version": "1.9.0",
+    "cross_validation": {
+        "accuracy_folds": [
+            0.575,
+            0.5625,
+            0.63125,
+            0.58125,
+            0.575
+        ],
+        "mean_accuracy": 0.585,
+        "std_accuracy": 0.023913908087136237,
+        "min_accuracy": 0.5625,
+        "max_accuracy": 0.63125,
+        "precision_folds": [
+            0.5708658318425761,
+            0.5643319922308546,
+            0.6287757501652232,
+            0.5851911004539037,
+            0.5729017323775387
+        ],
+        "mean_precision": 0.5844132814140194,
+        "std_precision": 0.023185948169218068,
+        "min_precision": 0.5643319922308546,
+        "max_precision": 0.6287757501652232,
+        "recall_folds": [
+            0.575,
+            0.5625,
+            0.63125,
+            0.58125,
+            0.575
+        ],
+        "mean_recall": 0.585,
+        "std_recall": 0.023913908087136237,
+        "min_recall": 0.5625,
+        "max_recall": 0.63125,
+        "f1_score_folds": [
+            0.5717593189139438,
+            0.5472136223757644,
+            0.6282894181769093,
+            0.5663669394235467,
+            0.5723902084757347
+        ],
+        "mean_f1_score": 0.5772039014731798,
+        "std_f1_score": 0.027127114565360884,
+        "min_f1_score": 0.5472136223757644,
+        "max_f1_score": 0.6282894181769093,
+        "roc_auc_folds": [
+            0.8193609907806098,
+            0.8067955941117706,
+            0.8541666666666666,
+            0.8266775638082455,
+            0.8303107009783146
+        ],
+        "mean_roc_auc": 0.8274623032691213,
+        "std_roc_auc": 0.01558586758207825,
+        "min_roc_auc": 0.8067955941117706,
+        "max_roc_auc": 0.8541666666666666,
+        "model_name": "Logistic Regression"
+    }
+}
