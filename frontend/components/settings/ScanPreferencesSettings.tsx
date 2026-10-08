@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Sliders, Shield, Database, Check, Save } from "lucide-react";
 
 export function ScanPreferencesSettings() {
@@ -9,8 +9,24 @@ export function ScanPreferencesSettings() {
   const [retentionDays, setRetentionDays] = useState("90");
   const [savedMsg, setSavedMsg] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedDepth = localStorage.getItem("sv_scan_depth");
+      const storedPdf = localStorage.getItem("sv_auto_export_pdf");
+      const storedRetention = localStorage.getItem("sv_retention_days");
+      if (storedDepth !== null) setScanDepth(storedDepth);
+      if (storedPdf !== null) setAutoExportPdf(storedPdf === "true");
+      if (storedRetention !== null) setRetentionDays(storedRetention);
+    }
+  }, []);
+
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
+    if (typeof window !== "undefined") {
+      localStorage.setItem("sv_scan_depth", scanDepth);
+      localStorage.setItem("sv_auto_export_pdf", String(autoExportPdf));
+      localStorage.setItem("sv_retention_days", retentionDays);
+    }
     setSavedMsg("Scan execution preferences saved successfully!");
     setTimeout(() => setSavedMsg(null), 3000);
   };

@@ -24,10 +24,10 @@ export function RiskDistributionChart({ data }: RiskDistributionProps) {
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }}>
-      <Card className="bg-[#111827] border-[#334155] h-full shadow-sm">
-        <CardHeader className="pb-4 border-b border-[#334155]/50">
-          <CardTitle className="text-sm font-medium text-[#F8FAFC] flex items-center gap-2">
-            <PieChartIcon className="h-4 w-4 text-[#2563EB]" />
+      <Card className="bg-card border-border h-full shadow-sm">
+        <CardHeader className="pb-4 border-b border-border">
+          <CardTitle className="text-sm font-medium text-foreground flex items-center gap-2">
+            <PieChartIcon className="h-4 w-4 text-primary" />
             Risk Distribution
           </CardTitle>
           <CardDescription>Breakdown of active findings by severity</CardDescription>
@@ -54,15 +54,22 @@ export function RiskDistributionChart({ data }: RiskDistributionProps) {
                     ))}
                   </Pie>
                   <Tooltip 
-                    contentStyle={{ backgroundColor: '#020817', border: '1px solid #334155', borderRadius: '8px', boxShadow: '0 10px 40px -10px rgba(0,0,0,0.5)' }}
-                    itemStyle={{ color: '#F8FAFC' }}
+                    contentStyle={{ 
+                      backgroundColor: 'var(--card)', 
+                      borderColor: 'var(--border)', 
+                      borderRadius: '8px', 
+                      color: 'var(--foreground)',
+                      boxShadow: '0 10px 40px -10px rgba(0,0,0,0.15)' 
+                    }}
+                    itemStyle={{ color: 'var(--foreground)' }}
+                    labelStyle={{ color: 'var(--foreground)', fontWeight: 600 }}
                   />
                   <Legend verticalAlign="bottom" height={36} iconType="circle" />
                 </PieChart>
               </ResponsiveContainer>
               {/* Centered Total Count */}
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none pb-8">
-                <span className="text-3xl font-bold text-[#F8FAFC]">{totalFindings}</span>
+                <span className="text-3xl font-bold text-foreground">{totalFindings}</span>
                 <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Total</span>
               </div>
             </div>

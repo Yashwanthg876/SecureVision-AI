@@ -7,6 +7,7 @@ import { AssessmentResultsViewer } from "@/components/website-security/Assessmen
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Download, FileText, FileJson, FileSpreadsheet, Printer, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
+import api from "@/lib/api";
 
 export default function AssessmentDetailsPage() {
   const params = useParams();
@@ -20,14 +21,12 @@ export default function AssessmentDetailsPage() {
   useEffect(() => {
     async function fetchAssessment() {
       try {
-        const response = await fetch(`/api/v1/assessment/history/${params.id}`);
-        if (response.ok) {
-          const json = await response.json();
-          if (json.data || json.domain) {
-            setData(json.data || json);
-            setLoading(false);
-            return;
-          }
+        const response = await api.get(`/assessment/history/${params.id}`);
+        const result = response.data?.data || response.data;
+        if (result && (result.data || result.domain || result.overall_score !== undefined)) {
+          setData(result.data || result);
+          setLoading(false);
+          return;
         }
       } catch (err) {
         console.warn("Error fetching assessment details, using sample details:", err);

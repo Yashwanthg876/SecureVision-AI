@@ -78,10 +78,10 @@ class ReportBuilder:
             ) for f in self.findings
         ]
         
-        auditor_name = self.user.full_name if self.user and hasattr(self.user, 'full_name') and self.user.full_name else (self.assessment.user.full_name if getattr(self.assessment, 'user', None) and self.assessment.user.full_name else "PRAKASH")
-        user_email = self.user.email if self.user and hasattr(self.user, 'email') and self.user.email else (self.assessment.user.email if getattr(self.assessment, 'user', None) and self.assessment.user.email else "9924008052@klu.ac.in")
-        organization = self.user.organization if self.user and hasattr(self.user, 'organization') and self.user.organization else (self.assessment.user.organization if getattr(self.assessment, 'user', None) and self.assessment.user.organization else "KLU Cyber Security")
-        user_role = self.user.role if self.user and hasattr(self.user, 'role') and self.user.role else "Lead Security Analyst"
+        auditor_name = self.user.full_name if self.user and hasattr(self.user, 'full_name') and self.user.full_name else (self.assessment.user.full_name if getattr(self.assessment, 'user', None) and self.assessment.user.full_name else "Security Analyst")
+        user_email = self.user.email if self.user and hasattr(self.user, 'email') and self.user.email else (self.assessment.user.email if getattr(self.assessment, 'user', None) and self.assessment.user.email else "analyst@securevision.ai")
+        organization = self.user.organization if self.user and hasattr(self.user, 'organization') and self.user.organization else (self.assessment.user.organization if getattr(self.assessment, 'user', None) and self.assessment.user.organization else "Enterprise Security Team")
+        user_role = self.user.role if self.user and hasattr(self.user, 'role') and self.user.role else "Security Auditor"
 
         return NormalizedReportModel(
             assessment_id=str(self.assessment.id),

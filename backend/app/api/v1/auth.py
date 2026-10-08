@@ -49,11 +49,16 @@ def login(
         httponly=True,
         secure=secure_cookie,
         samesite=samesite_cookie,
-        max_age=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60
+        max_age=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
+        path="/"
     )
     
     logger.info("User logged in successfully")
-    return success_response({"message": "Login successful"}, request.state.request_id)
+    return success_response({
+        "message": "Login successful",
+        "access_token": access_token,
+        "token_type": "bearer"
+    }, request.state.request_id)
 
 @router.post("/demo-login", response_model=StandardResponse)
 def demo_login(
@@ -94,7 +99,11 @@ def demo_login(
         max_age=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
         path="/",
     )
-    return success_response({"message": "Demo login successful"}, request.state.request_id)
+    return success_response({
+        "message": "Demo login successful",
+        "access_token": access_token,
+        "token_type": "bearer"
+    }, request.state.request_id)
 
 @router.post("/logout", response_model=StandardResponse)
 def logout(request: Request, response: Response) -> Any:
@@ -108,7 +117,8 @@ def logout(request: Request, response: Response) -> Any:
         key="access_token",
         httponly=True,
         secure=secure_cookie,
-        samesite=samesite_cookie
+        samesite=samesite_cookie,
+        path="/"
     )
     return success_response({"message": "Logout successful"}, request.state.request_id)
 

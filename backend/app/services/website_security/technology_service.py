@@ -12,21 +12,34 @@ async def analyze_technology(url: str) -> TechnologyInfo:
     
     try:
         async with httpx.AsyncClient(timeout=10.0, follow_redirects=False) as client:
-            response = await client.get(url)
-            headers = response.headers
+            server = None
+            x_powered_by = None
+            body_chunks = []
+            total_size = 0
+            max_size = 512 * 1024  # 512 KB limit to prevent OOM
             
-            # 1. Header Analysis
-            server = headers.get("server")
-            x_powered_by = headers.get("x-powered-by")
-            
-            if x_powered_by:
-                frameworks.add(x_powered_by.split("/")[0])
+            async with client.stream("GET", url) as response:
+                headers = response.headers
                 
-            if headers.get("x-aspnet-version"):
-                frameworks.add("ASP.NET")
+                # 1. Header Analysis
+                server = headers.get("server")
+                x_powered_by = headers.get("x-powered-by")
                 
+                if x_powered_by:
+                    frameworks.add(x_powered_by.split("/")[0])
+                    
+                if headers.get("x-aspnet-version"):
+                    frameworks.add("ASP.NET")
+                    
+                async for chunk in response.aiter_bytes():
+                    body_chunks.append(chunk)
+                    total_size += len(chunk)
+                    if total_size >= max_size:
+                        break
+
             # 2. HTML Meta Analysis
-            soup = BeautifulSoup(response.text, "html.parser")
+            html_text = b"".join(body_chunks).decode("utf-8", errors="ignore")
+            soup = BeautifulSoup(html_text, "html.parser")
             generator = soup.find("meta", attrs={"name": "generator"})
             if generator and generator.get("content"):
                 frameworks.add(generator["content"].split(" ")[0])

@@ -17,7 +17,7 @@ export function QuickChecks() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h3 className="text-xl font-semibold text-[#F8FAFC] tracking-tight">Passive Inspection Capabilities</h3>
+        <h3 className="text-xl font-semibold text-foreground tracking-tight">Passive Inspection Capabilities</h3>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {checks.map((check, index) => (
@@ -28,14 +28,14 @@ export function QuickChecks() {
             transition={{ duration: 0.4, delay: index * 0.1 }}
             className="h-full"
           >
-            <Card className="h-full bg-[#111827] border-[#334155] shadow-md hover:shadow-xl hover:border-[#2563EB]/50 transition-all duration-300 group overflow-hidden relative">
-              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#2563EB]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <Card className="h-full bg-card border-border shadow-sm hover:shadow-md hover:border-primary/50 transition-all duration-300 group overflow-hidden relative">
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <CardContent className="p-8 flex flex-col items-start space-y-5 h-full justify-center">
-                <div className="h-14 w-14 rounded-xl bg-[#020817] border border-[#334155] flex items-center justify-center group-hover:scale-105 group-hover:bg-[#2563EB]/10 group-hover:border-[#2563EB]/30 transition-all duration-300 shadow-sm">
-                  <check.icon className="h-6 w-6 text-[#2563EB] group-hover:text-white transition-colors duration-300" />
+                <div className="h-14 w-14 rounded-xl bg-muted border border-border flex items-center justify-center group-hover:scale-105 group-hover:bg-primary/10 group-hover:border-primary/30 transition-all duration-300 shadow-sm">
+                  <check.icon className="h-6 w-6 text-primary transition-colors duration-300" />
                 </div>
                 <div className="w-full">
-                  <h4 className="text-base font-semibold text-[#F8FAFC] tracking-wide truncate">{check.name}</h4>
+                  <h4 className="text-base font-semibold text-foreground tracking-wide truncate">{check.name}</h4>
                   <p className="text-sm text-muted-foreground mt-2 truncate font-medium">{check.desc}</p>
                 </div>
               </CardContent>

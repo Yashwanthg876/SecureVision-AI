@@ -19,11 +19,11 @@ export default function ProfilePage() {
   };
 
   const profileData = {
-    fullName: user.full_name || "PRAKASH",
-    email: user.email || "9924008052@klu.ac.in",
-    organization: user.organization || "KLU Cyber Security",
+    fullName: user.full_name || "Security Analyst",
+    email: user.email || "analyst@securevision.ai",
+    organization: user.organization || "Enterprise Workspace",
     role: user.role || "Lead Security Analyst",
-    joinedDate: user.created_at ? new Date(user.created_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : "January 2026",
+    joinedDate: user.created_at ? new Date(user.created_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : "Active Member",
   };
 
   return (

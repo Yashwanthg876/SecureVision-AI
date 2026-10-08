@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Key, Eye, EyeOff, Check, Save, GitBranch, Bot } from "lucide-react";
 
 export function APIKeysSettings() {
@@ -10,8 +10,21 @@ export function APIKeysSettings() {
   const [showGithub, setShowGithub] = useState(false);
   const [savedMsg, setSavedMsg] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedGemini = localStorage.getItem("sv_gemini_key");
+      const storedGithub = localStorage.getItem("sv_github_token");
+      if (storedGemini) setGeminiKey(storedGemini);
+      if (storedGithub) setGithubToken(storedGithub);
+    }
+  }, []);
+
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
+    if (typeof window !== "undefined") {
+      localStorage.setItem("sv_gemini_key", geminiKey);
+      localStorage.setItem("sv_github_token", githubToken);
+    }
     setSavedMsg("API key credentials saved successfully!");
     setTimeout(() => setSavedMsg(null), 3000);
   };
@@ -74,7 +87,7 @@ export function APIKeysSettings() {
           </div>
           <p className="text-[11px] text-muted-foreground">Required for scanning private repositories and accessing higher API rate limits.</p>
         </div>
-
+        
         {savedMsg && (
           <div className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs flex items-center gap-2">
             <Check className="w-4 h-4" /> {savedMsg}

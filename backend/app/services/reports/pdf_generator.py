@@ -1,4 +1,5 @@
 import io
+from typing import Any
 from datetime import datetime
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
@@ -6,6 +7,13 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak
 from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from .report_builder import NormalizedReportModel
+
+from xml.sax.saxutils import escape as xml_escape
+
+def _safe_text(val: Any) -> str:
+    if val is None:
+        return ""
+    return xml_escape(str(val))
 
 def generate_pdf_report(report: NormalizedReportModel) -> io.BytesIO:
     buffer = io.BytesIO()
@@ -36,12 +44,12 @@ def generate_pdf_report(report: NormalizedReportModel) -> io.BytesIO:
     story.append(Paragraph("Comprehensive Security Assessment Report", subtitle_style))
     
     story.append(Spacer(1, 40))
-    story.append(Paragraph(f"<b>Target Domain:</b> {report.domain}", normal_style))
-    story.append(Paragraph(f"<b>Target URL:</b> {report.target_url}", normal_style))
+    story.append(Paragraph(f"<b>Target Domain:</b> {_safe_text(report.domain)}", normal_style))
+    story.append(Paragraph(f"<b>Target URL:</b> {_safe_text(report.target_url)}", normal_style))
     story.append(Paragraph(f"<b>Assessment Date:</b> {report.assessment_date.strftime('%Y-%m-%d %H:%M:%S UTC')}", normal_style))
-    story.append(Paragraph(f"<b>Auditor / Analyst:</b> {report.auditor_name} ({report.user_role})", normal_style))
-    story.append(Paragraph(f"<b>Organization:</b> {report.organization}", normal_style))
-    story.append(Paragraph(f"<b>Account Email:</b> {report.user_email}", normal_style))
+    story.append(Paragraph(f"<b>Auditor / Analyst:</b> {_safe_text(report.auditor_name)} ({_safe_text(report.user_role)})", normal_style))
+    story.append(Paragraph(f"<b>Organization:</b> {_safe_text(report.organization)}", normal_style))
+    story.append(Paragraph(f"<b>Account Email:</b> {_safe_text(report.user_email)}", normal_style))
     story.append(Paragraph(f"<b>Report Classification:</b> CONFIDENTIAL / RESTRICTED", normal_style))
     
     story.append(Spacer(1, 60))
@@ -74,9 +82,9 @@ def generate_pdf_report(report: NormalizedReportModel) -> io.BytesIO:
     # --- EXECUTIVE SUMMARY ---
     story.append(Paragraph("Executive Summary", heading_style))
     exec_summary_text = (
-        f"This report presents the findings of a passive security assessment conducted on <b>{report.domain}</b>. "
+        f"This report presents the findings of a passive security assessment conducted on <b>{_safe_text(report.domain)}</b>. "
         f"The assessment yielded an overall security score of <b>{report.overall_score}/100</b>, which places the target in the "
-        f"<b>{report.risk_level}</b> risk category. A total of <b>{report.total_findings}</b> issues were identified, "
+        f"<b>{_safe_text(report.risk_level)}</b> risk category. A total of <b>{report.total_findings}</b> issues were identified, "
         f"including {report.critical_count} critical, {report.high_count} high, {report.medium_count} medium, and {report.low_count} low severity findings."
     )
     story.append(Paragraph(exec_summary_text, normal_style))
@@ -112,14 +120,14 @@ def generate_pdf_report(report: NormalizedReportModel) -> io.BytesIO:
             
             sev_color = "#ef4444" if finding.severity == "Critical" else "#f97316" if finding.severity == "High" else "#eab308" if finding.severity == "Medium" else "#3b82f6"
             
-            story.append(Paragraph(f"<b>{finding.title}</b>", subheading_style))
+            story.append(Paragraph(f"<b>{_safe_text(finding.title)}</b>", subheading_style))
             
             finding_data = [
-                [Paragraph("<b>Category:</b>", normal_style), Paragraph(finding.category, normal_style)],
-                [Paragraph("<b>Severity:</b>", normal_style), Paragraph(f'<font color="{sev_color}">{finding.severity}</font>', normal_style)],
-                [Paragraph("<b>Description:</b>", normal_style), Paragraph(finding.description, normal_style)],
-                [Paragraph("<b>Recommendation:</b>", normal_style), Paragraph(finding.recommendation, normal_style)],
-                [Paragraph("<b>Reference:</b>", normal_style), Paragraph(finding.reference or "N/A", normal_style)]
+                [Paragraph("<b>Category:</b>", normal_style), Paragraph(_safe_text(finding.category), normal_style)],
+                [Paragraph("<b>Severity:</b>", normal_style), Paragraph(f'<font color="{sev_color}">{_safe_text(finding.severity)}</font>', normal_style)],
+                [Paragraph("<b>Description:</b>", normal_style), Paragraph(_safe_text(finding.description), normal_style)],
+                [Paragraph("<b>Recommendation:</b>", normal_style), Paragraph(_safe_text(finding.recommendation), normal_style)],
+                [Paragraph("<b>Reference:</b>", normal_style), Paragraph(_safe_text(finding.reference) if finding.reference else "N/A", normal_style)]
             ]
             
             t = Table(finding_data, colWidths=[100, 350])

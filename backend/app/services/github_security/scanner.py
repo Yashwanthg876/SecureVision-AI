@@ -18,8 +18,16 @@ import json
 
 logger = logging.getLogger(__name__)
 
+import os
+
 GITHUB_API = "https://api.github.com"
-HEADERS = {"Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"}
+
+def _get_github_headers() -> Dict[str, str]:
+    headers = {"Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"}
+    token = os.getenv("GITHUB_TOKEN")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    return headers
 
 # ─── Secret detection patterns ────────────────────────────────────────────────
 SECRET_PATTERNS: List[Dict[str, Any]] = [
@@ -238,7 +246,7 @@ class GitHubSecurityScanner:
         start_ms = int(time.time() * 1000)
         owner, repo_name = _parse_repo_url(repo_url)
 
-        async with httpx.AsyncClient(headers=HEADERS, follow_redirects=True) as client:
+        async with httpx.AsyncClient(headers=_get_github_headers(), follow_redirects=True) as client:
             # ── 1. Fetch repo metadata ────────────────────────────────────────
             repo_resp = await client.get(f"{GITHUB_API}/repos/{owner}/{repo_name}", timeout=10.0)
             if repo_resp.status_code == 404:

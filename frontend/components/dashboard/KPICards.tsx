@@ -36,23 +36,23 @@ export function KPICards({ data }: KPICardsProps) {
     <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       {/* Security Score */}
       <motion.div variants={cardVariants} initial="initial" animate="animate" whileHover="hover" transition={{ duration: 0.3, delay: 0.1 }}>
-        <Card className="h-full bg-[#111827] border-[#334155] relative overflow-hidden group shadow-sm transition-colors duration-300">
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#2563EB]/50 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
+        <Card className="h-full bg-card border-border relative overflow-hidden group shadow-sm transition-colors duration-300">
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
           <CardContent className="p-6">
             <div className="flex justify-between items-start mb-4">
               <p className="text-xs font-medium text-muted-foreground tracking-wide uppercase">Overall Security Score</p>
-              <div className="p-2 bg-[#2563EB]/10 rounded-lg">
-                <Shield className="h-4 w-4 text-[#2563EB]" />
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <Shield className="h-4 w-4 text-primary" />
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-4xl font-bold text-[#F8FAFC] tracking-tight">{data.score}</span>
+              <span className="text-4xl font-bold text-foreground tracking-tight">{data.score}</span>
               <div className="flex items-center justify-between mt-3">
                 <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                  data.score_status === 'Healthy' ? 'bg-green-500/10 text-green-500' : 
-                  data.score_status === 'Fair' ? 'bg-yellow-500/10 text-yellow-500' : 
-                  data.score_status === 'Warning' || data.score_status === 'Critical' ? 'bg-red-500/10 text-red-400' :
-                  'bg-slate-500/10 text-slate-400'
+                  data.score_status === 'Healthy' ? 'bg-green-500/10 text-green-600 dark:text-green-400' : 
+                  data.score_status === 'Fair' ? 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400' : 
+                  data.score_status === 'Warning' || data.score_status === 'Critical' ? 'bg-red-500/10 text-red-600 dark:text-red-400' :
+                  'bg-slate-500/10 text-slate-500'
                 }`}>
                   {data.score_status}
                 </span>
@@ -68,20 +68,20 @@ export function KPICards({ data }: KPICardsProps) {
       
       {/* Websites Monitored */}
       <motion.div variants={cardVariants} initial="initial" animate="animate" whileHover="hover" transition={{ duration: 0.3, delay: 0.2 }}>
-        <Card className="h-full bg-[#111827] border-[#334155] relative overflow-hidden group shadow-sm transition-colors duration-300">
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#2563EB]/50 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
+        <Card className="h-full bg-card border-border relative overflow-hidden group shadow-sm transition-colors duration-300">
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
           <CardContent className="p-6">
             <div className="flex justify-between items-start mb-4">
               <p className="text-xs font-medium text-muted-foreground tracking-wide uppercase">Websites Monitored</p>
-              <div className="p-2 bg-[#2563EB]/10 rounded-lg">
-                <Globe className="h-4 w-4 text-[#2563EB]" />
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <Globe className="h-4 w-4 text-primary" />
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-4xl font-bold text-[#F8FAFC] tracking-tight">{data.websites_total}</span>
+              <span className="text-4xl font-bold text-foreground tracking-tight">{data.websites_total}</span>
               <div className="flex items-center justify-between mt-3">
                 <span className="text-xs text-muted-foreground font-medium">Assessments Saved</span>
-                <span className="text-xs text-muted-foreground flex items-center bg-[#334155]/40 px-2 py-0.5 rounded-full">
+                <span className="text-xs text-muted-foreground flex items-center bg-muted px-2 py-0.5 rounded-full">
                   <TrendingUp className="h-3 w-3 mr-1 text-green-500" />
                   {data.websites_scanned_today} Scanned today
                 </span>
@@ -93,20 +93,20 @@ export function KPICards({ data }: KPICardsProps) {
 
       {/* GitHub Repositories */}
       <motion.div variants={cardVariants} initial="initial" animate="animate" whileHover="hover" transition={{ duration: 0.3, delay: 0.3 }}>
-        <Card className="h-full bg-[#111827] border-[#334155] relative overflow-hidden group shadow-sm transition-colors duration-300">
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#2563EB]/50 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
+        <Card className="h-full bg-card border-border relative overflow-hidden group shadow-sm transition-colors duration-300">
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
           <CardContent className="p-6">
             <div className="flex justify-between items-start mb-4">
               <p className="text-xs font-medium text-muted-foreground tracking-wide uppercase">GitHub Repositories</p>
-              <div className="p-2 bg-[#2563EB]/10 rounded-lg">
-                <GitBranch className="h-4 w-4 text-[#2563EB]" />
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <GitBranch className="h-4 w-4 text-primary" />
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-4xl font-bold text-[#F8FAFC] tracking-tight">{data.repos_total}</span>
+              <span className="text-4xl font-bold text-foreground tracking-tight">{data.repos_total}</span>
               <div className="flex items-center justify-between mt-3">
                 <span className="text-xs text-muted-foreground font-medium">Repository Scans</span>
-                <span className="text-xs flex items-center bg-red-500/10 text-red-400 px-2 py-0.5 rounded-full">
+                <span className="text-xs flex items-center bg-red-500/10 text-red-600 dark:text-red-400 px-2 py-0.5 rounded-full">
                   {data.repos_high_risk} High Risk
                 </span>
               </div>
@@ -117,20 +117,20 @@ export function KPICards({ data }: KPICardsProps) {
 
       {/* AI Threat Scans */}
       <motion.div variants={cardVariants} initial="initial" animate="animate" whileHover="hover" transition={{ duration: 0.3, delay: 0.4 }}>
-        <Card className="h-full bg-[#111827] border-[#334155] relative overflow-hidden group shadow-sm transition-colors duration-300">
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#2563EB]/50 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
+        <Card className="h-full bg-card border-border relative overflow-hidden group shadow-sm transition-colors duration-300">
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
           <CardContent className="p-6">
             <div className="flex justify-between items-start mb-4">
               <p className="text-xs font-medium text-muted-foreground tracking-wide uppercase">AI Scans</p>
-              <div className="p-2 bg-[#2563EB]/10 rounded-lg">
-                <Brain className="h-4 w-4 text-[#2563EB]" />
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <Brain className="h-4 w-4 text-primary" />
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-4xl font-bold text-[#F8FAFC] tracking-tight">{data.ai_threats_total}</span>
+              <span className="text-4xl font-bold text-foreground tracking-tight">{data.ai_threats_total}</span>
               <div className="flex items-center justify-between mt-3">
                 <span className="text-xs text-muted-foreground font-medium">Total AI Scans</span>
-                <span className="text-xs flex items-center bg-red-500/10 text-red-400 px-2 py-0.5 rounded-full">
+                <span className="text-xs flex items-center bg-red-500/10 text-red-600 dark:text-red-400 px-2 py-0.5 rounded-full">
                   {data.ai_threats_critical} Critical
                 </span>
               </div>

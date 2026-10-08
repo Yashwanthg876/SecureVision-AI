@@ -1,5 +1,7 @@
 from fastapi import Request
 from fastapi.responses import JSONResponse
+from fastapi.exceptions import RequestValidationError
+from starlette.exceptions import HTTPException as StarletteHTTPException
 from app.core.responses import error_response
 import logging
 
@@ -31,6 +33,22 @@ async def global_exception_handler(request: Request, exc: Exception):
         return JSONResponse(
             status_code=exc.status_code,
             content=error_response(exc.message, request_id).model_dump()
+        )
+
+    if isinstance(exc, StarletteHTTPException):
+        logger.warning(f"HTTP Exception [{request_id}] {exc.status_code}: {exc.detail}")
+        return JSONResponse(
+            status_code=exc.status_code,
+            content=error_response(exc.detail, request_id).model_dump()
+        )
+
+    if isinstance(exc, RequestValidationError):
+        logger.warning(f"Validation Error [{request_id}]: {exc.errors()}")
+        first_error = exc.errors()[0] if exc.errors() else {"msg": "Invalid request payload"}
+        err_msg = f"{first_error.get('loc', ['field'])[-1]}: {first_error.get('msg', 'Validation error')}"
+        return JSONResponse(
+            status_code=422,
+            content=error_response(err_msg, request_id).model_dump()
         )
         
     logger.error(f"Unhandled Exception [{request_id}]: {str(exc)}", exc_info=True)

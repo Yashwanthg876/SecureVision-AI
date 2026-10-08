@@ -1,19 +1,26 @@
 import os
-import google.generativeai as genai
 from typing import Dict, Any
 from app.ai.copilot.providers.provider import LLMProvider
+from app.core.config import settings
+
+try:
+    import google.generativeai as genai
+except ImportError:
+    genai = None
 
 class GeminiProvider(LLMProvider):
     """
     Google Gemini implementation of the LLMProvider.
     """
     def __init__(self):
-        self.api_key = os.getenv("GEMINI_API_KEY")
-        if self.api_key:
-            genai.configure(api_key=self.api_key)
-            self.model = genai.GenerativeModel('gemini-1.5-flash')
-        else:
-            self.model = None
+        self.api_key = os.getenv("GEMINI_API_KEY") or getattr(settings, "GEMINI_API_KEY", "")
+        self.model = None
+        if genai and self.api_key:
+            try:
+                genai.configure(api_key=self.api_key)
+                self.model = genai.GenerativeModel('gemini-1.5-flash')
+            except Exception:
+                self.model = None
             
     def generate_report(self, context: Dict[str, Any], prompt_template: str) -> str:
         if not self.model:

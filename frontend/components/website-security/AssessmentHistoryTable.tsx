@@ -10,6 +10,8 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
+import api from "@/lib/api";
+
 interface HistoryData {
   id: string;
   domain: string;
@@ -31,14 +33,11 @@ export function AssessmentHistoryTable({ refreshKey }: { refreshKey?: number }) 
       setLoading(true);
       setError(false);
       try {
-        const response = await fetch('/api/v1/assessment/history');
-        if (response.ok) {
-          const json = await response.json();
-          const items = json.data?.items || json.data?.data || (Array.isArray(json.data) ? json.data : []) || [];
-          setData(items);
-          setLoading(false);
-          return;
-        }
+        const response = await api.get('/assessment/history');
+        const items = response.data?.data?.items || response.data?.items || (Array.isArray(response.data?.data) ? response.data.data : []) || [];
+        setData(items);
+        setLoading(false);
+        return;
       } catch (err) {
         console.warn("Assessment history fetch failed", err);
       }

@@ -9,7 +9,12 @@ async def analyze_headers(url: str) -> HTTPHeadersInfo:
         # Redirects are disabled so a public URL cannot redirect the scanner into
         # an internal network (SSRF).
         async with httpx.AsyncClient(timeout=10.0, follow_redirects=False) as client:
-            response = await client.head(url)
+            try:
+                response = await client.head(url)
+                if response.status_code in (405, 501):
+                    response = await client.get(url)
+            except Exception:
+                response = await client.get(url)
             headers = response.headers
             
             hsts = 'strict-transport-security' in headers

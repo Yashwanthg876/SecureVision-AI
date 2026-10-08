@@ -14,7 +14,7 @@ export function ReportStatsCards({ stats, loading }: ReportStatsCardsProps) {
     return (
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="h-32 rounded-xl border border-[#334155] bg-[#111827]/40 animate-pulse" />
+          <div key={i} className="h-32 rounded-xl border border-border bg-card/60 animate-pulse" />
         ))}
       </div>
     );
@@ -70,7 +70,7 @@ export function ReportStatsCards({ stats, loading }: ReportStatsCardsProps) {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.08 }}
-            className="group relative overflow-hidden rounded-xl border border-[#334155] bg-[#111827]/70 p-5 backdrop-blur-md transition-all duration-300 hover:border-[#475569] hover:shadow-lg hover:shadow-purple-950/20"
+            className="group relative overflow-hidden rounded-xl border border-border bg-card p-5 backdrop-blur-md shadow-sm transition-all duration-300 hover:border-primary/50 hover:shadow-md"
           >
             <div className="flex items-center justify-between">
               <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -82,7 +82,7 @@ export function ReportStatsCards({ stats, loading }: ReportStatsCardsProps) {
             </div>
 
             <div className="mt-3">
-              <span className={`font-bold tracking-tight text-[#F8FAFC] ${card.isSmallText ? 'text-xl' : 'text-3xl'}`}>
+              <span className={`font-bold tracking-tight text-foreground ${card.isSmallText ? 'text-xl' : 'text-3xl'}`}>
                 {card.value}
               </span>
             </div>

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import WebThreads from "@/components/ui/WebThreads";
 import "./globals.css";
+import { UserProvider } from "@/context/UserContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,8 +20,6 @@ export const metadata: Metadata = {
   description: "Next-generation vulnerability scanner, ML decision engine, SHAP explainability, and AI Copilot for continuous infrastructure security.",
 };
 
-import { UserProvider } from "@/context/UserContext";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,15 +28,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-[#020817] text-foreground selection:bg-primary/30 selection:text-primary-foreground relative">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('securevision-theme');if(t==='light'){document.documentElement.classList.remove('dark');document.documentElement.classList.add('light');document.documentElement.setAttribute('data-theme','light');}else{document.documentElement.classList.add('dark');document.documentElement.classList.remove('light');document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();`,
+          }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-primary/30 selection:text-primary-foreground relative transition-colors duration-200">
         {/* Global Animated WebThreads Background */}
-        <div className="fixed inset-0 z-0 pointer-events-none opacity-70 overflow-hidden">
+        <div className="fixed inset-0 z-0 pointer-events-none opacity-25 dark:opacity-70 overflow-hidden">
           <WebThreads
             color1="#3B82F6"
             color2="#10B981"
-            color3="#FFFFFF"
+            color3="#8B5CF6"
             speed={0.2}
             threadCount={7}
             frequency={4.5}
@@ -58,12 +66,14 @@ export default function RootLayout({
           />
         </div>
 
-        {/* Global Page Content Container with UserContext */}
-        <UserProvider>
-          <div className="relative z-10 flex-1 flex flex-col">
-            {children}
-          </div>
-        </UserProvider>
+        {/* Global Providers */}
+        <ThemeProvider>
+          <UserProvider>
+            <div className="relative z-10 flex-1 flex flex-col">
+              {children}
+            </div>
+          </UserProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

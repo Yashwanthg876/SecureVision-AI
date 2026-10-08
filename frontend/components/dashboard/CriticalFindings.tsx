@@ -14,27 +14,26 @@ interface CriticalFindingsProps {
 }
 
 export function CriticalFindings({ data }: CriticalFindingsProps) {
-  // Sort findings to show highest priority if needed, but mock data is already provided.
-  const displayData = data.slice(0, 5); // display up to 5 as requested
+  const displayData = data.slice(0, 5);
 
   const getSeverityStyles = (severity: string) => {
     switch (severity) {
       case 'Critical':
-        return { color: SEVERITY_COLORS.Critical, bg: 'bg-red-500/10' };
+        return { color: SEVERITY_COLORS.Critical, bg: 'bg-red-500/10 text-red-600 dark:text-red-400' };
       case 'High':
-        return { color: SEVERITY_COLORS.High, bg: 'bg-orange-500/10' };
+        return { color: SEVERITY_COLORS.High, bg: 'bg-orange-500/10 text-orange-600 dark:text-orange-400' };
       case 'Medium':
-        return { color: SEVERITY_COLORS.Medium, bg: 'bg-yellow-500/10' };
+        return { color: SEVERITY_COLORS.Medium, bg: 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400' };
       default:
-        return { color: SEVERITY_COLORS.Low, bg: 'bg-blue-500/10' };
+        return { color: SEVERITY_COLORS.Low, bg: 'bg-blue-500/10 text-blue-600 dark:text-blue-400' };
     }
   };
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.4 }}>
-      <Card className="bg-[#111827] border-[#334155] shadow-sm flex flex-col h-full">
-        <CardHeader className="pb-4 border-b border-[#334155]/50 shrink-0">
-          <CardTitle className="text-sm font-medium text-[#F8FAFC] flex items-center gap-2">
+      <Card className="bg-card border-border shadow-sm flex flex-col h-full">
+        <CardHeader className="pb-4 border-b border-border shrink-0">
+          <CardTitle className="text-sm font-medium text-foreground flex items-center gap-2">
             <AlertOctagon className="h-4 w-4 text-red-500" />
             Critical Findings
           </CardTitle>
@@ -50,7 +49,7 @@ export function CriticalFindings({ data }: CriticalFindingsProps) {
                 return (
                   <div 
                     key={finding.id} 
-                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-lg bg-[#020817]/50 border border-[#334155]/50 transition-colors hover:bg-white/5 relative overflow-hidden group"
+                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-lg bg-muted/40 border border-border transition-colors hover:bg-muted relative overflow-hidden group"
                   >
                     {/* Subtle Left Border Glow for Severity */}
                     <div 
@@ -62,12 +61,11 @@ export function CriticalFindings({ data }: CriticalFindingsProps) {
                       <div className="flex items-center gap-2 mb-1.5">
                         <Badge 
                           variant="outline" 
-                          className="font-medium border-0 shadow-none"
-                          style={{ backgroundColor: styles.bg, color: styles.color }}
+                          className={`font-medium border-0 shadow-none ${styles.bg}`}
                         >
                           {finding.severity}
                         </Badge>
-                        <h4 className="font-semibold text-sm text-[#F8FAFC] truncate">
+                        <h4 className="font-semibold text-sm text-foreground truncate">
                           {finding.title}
                         </h4>
                       </div>
@@ -84,7 +82,7 @@ export function CriticalFindings({ data }: CriticalFindingsProps) {
                     </div>
                     
                     <div className="shrink-0 pl-2 sm:pl-0">
-                      <Button className="bg-transparent hover:bg-[#2563EB]/10 h-8 px-3 text-xs text-muted-foreground hover:text-[#2563EB] group-hover:text-[#2563EB]">
+                      <Button className="bg-transparent hover:bg-primary/10 h-8 px-3 text-xs text-muted-foreground hover:text-primary group-hover:text-primary">
                         View Details
                         <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                       </Button>

@@ -18,6 +18,8 @@ const SCORE_COLOR = (score: number) =>
   score >= 65 ? "text-yellow-500" :
   score >= 40 ? "text-orange-500" : "text-red-500";
 
+import api from "@/lib/api";
+
 export function RepoScanHistoryTable({ refreshKey }: { refreshKey?: number }) {
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -26,14 +28,11 @@ export function RepoScanHistoryTable({ refreshKey }: { refreshKey?: number }) {
     async function fetchHistory() {
       setLoading(true);
       try {
-        const res = await fetch("/api/v1/github/history");
-        if (res.ok) {
-          const json = await res.json();
-          const items = json?.data?.items ?? [];
-          setData(items);
-          setLoading(false);
-          return;
-        }
+        const res = await api.get("/github/history");
+        const items = res.data?.data?.items ?? res.data?.items ?? [];
+        setData(items);
+        setLoading(false);
+        return;
       } catch (e) {
         console.warn("GitHub history fetch failed", e);
       }

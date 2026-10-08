@@ -8,11 +8,11 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[#020817]/70 backdrop-blur-md">
+    <div className="flex h-screen overflow-hidden bg-background/90 backdrop-blur-md transition-colors duration-200">
       {/* Mobile Sidebar Overlay */}
       {isMobileMenuOpen && (
         <div 
-          className="fixed inset-0 z-40 bg-black/80 lg:hidden"
+          className="fixed inset-0 z-40 bg-black/60 lg:hidden backdrop-blur-xs"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}

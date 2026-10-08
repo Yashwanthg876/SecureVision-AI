@@ -78,7 +78,7 @@ export default function ReportsPage() {
           <div>
             <div className="flex items-center gap-2 flex-wrap">
               <h4 className="text-sm font-bold text-[#F8FAFC]">
-                {user.full_name || "PRAKASH"}
+                {user.full_name || "Security Analyst"}
               </h4>
               <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#8B5CF6]/20 text-[#A78BFA] border border-[#8B5CF6]/30">
                 {user.role || "Lead Security Analyst"}
@@ -90,11 +90,11 @@ export default function ReportsPage() {
             <div className="flex items-center gap-4 text-xs text-muted-foreground mt-1 flex-wrap">
               <span className="flex items-center gap-1">
                 <Mail className="w-3.5 h-3.5 text-slate-400" />
-                {user.email || "9924008052@klu.ac.in"}
+                {user.email || "analyst@securevision.ai"}
               </span>
               <span className="flex items-center gap-1">
                 <Building className="w-3.5 h-3.5 text-slate-400" />
-                {user.organization || "KLU Cyber Security"}
+                {user.organization || "Enterprise Security Team"}
               </span>
             </div>
           </div>

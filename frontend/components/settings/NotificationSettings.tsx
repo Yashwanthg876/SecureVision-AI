@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Bell, Mail, Webhook, Check, Save } from "lucide-react";
 
 export function NotificationSettings() {
@@ -9,8 +9,24 @@ export function NotificationSettings() {
   const [webhookUrl, setWebhookUrl] = useState("https://hooks.slack.com/services/SecureVision/AlertsChannel");
   const [savedMsg, setSavedMsg] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedCritical = localStorage.getItem("sv_critical_alerts");
+      const storedWeekly = localStorage.getItem("sv_weekly_digest");
+      const storedWebhook = localStorage.getItem("sv_webhook_url");
+      if (storedCritical !== null) setCriticalAlerts(storedCritical === "true");
+      if (storedWeekly !== null) setWeeklyDigest(storedWeekly === "true");
+      if (storedWebhook !== null) setWebhookUrl(storedWebhook);
+    }
+  }, []);
+
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
+    if (typeof window !== "undefined") {
+      localStorage.setItem("sv_critical_alerts", String(criticalAlerts));
+      localStorage.setItem("sv_weekly_digest", String(weeklyDigest));
+      localStorage.setItem("sv_webhook_url", webhookUrl);
+    }
     setSavedMsg("Notification preferences updated successfully!");
     setTimeout(() => setSavedMsg(null), 3000);
   };

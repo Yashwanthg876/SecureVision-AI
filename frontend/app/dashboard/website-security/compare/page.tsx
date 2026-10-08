@@ -7,6 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { ArrowLeft, ArrowUpRight, ArrowDownRight, Minus, CheckCircle2, XCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
+import api from "@/lib/api";
+
 interface ComparisonData {
   assessment_old: { id: string; date: string; score: number };
   assessment_new: { id: string; date: string; score: number };
@@ -28,13 +30,8 @@ function CompareAssessmentsContent() {
   useEffect(() => {
     async function fetchComparison() {
       try {
-        const response = await fetch(`/api/v1/assessment/compare?domain=${domain}`);
-        if (!response.ok) {
-          const errData = await response.json();
-          throw new Error(errData.detail || "Failed to fetch comparison");
-        }
-        const json = await response.json();
-        setData(json.data ?? json);
+        const response = await api.get(`/assessment/compare?domain=${domain}`);
+        setData(response.data?.data ?? response.data);
       } catch (err: unknown) {
         console.error("Error fetching comparison:", err);
         setError(err instanceof Error ? err.message : "An error occurred");

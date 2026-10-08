@@ -23,9 +23,9 @@ interface UserContextType {
 
 const defaultUser: UserProfile = {
   id: "7db078ed-2be0-4356-afd5-2f3a09d51f93",
-  full_name: "PRAKASH",
-  email: "9924008052@klu.ac.in",
-  organization: "KLU Cyber Security",
+  full_name: "Security Analyst",
+  email: "analyst@securevision.ai",
+  organization: "Enterprise Workspace",
   role: "Lead Security Analyst",
 };
 
