@@ -2,10 +2,25 @@ from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker
 from app.core.config import settings
 
-connect_args = {"check_same_thread": False} if "sqlite" in settings.DATABASE_URL else {}
+
+# Configure database connection
+database_url = settings.DATABASE_URL
+
+if database_url.startswith("sqlite"):
+    connect_args = {"check_same_thread": False}
+else:
+    connect_args = {}
+
+    # Explicitly use psycopg2 for PostgreSQL
+    if database_url.startswith("postgresql"):
+        from sqlalchemy.engine import make_url
+
+        database_url = make_url(database_url).set(
+            drivername="postgresql+psycopg2"
+        )
 
 engine = create_engine(
-    settings.DATABASE_URL,
+    database_url,
     connect_args=connect_args,
     pool_pre_ping=True
 )
